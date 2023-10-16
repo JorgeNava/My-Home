@@ -1,0 +1,21 @@
+.text-wrapper {
+  width: 100%;
+
+  span {
+    display: inline-block;
+    font-family: var(--font-family);
+    font-size: var(--font-size);
+    transition: transform var(--bounce-duration)
+      cubic-bezier(0.25, 1.5, 0.5, 1.1);
+    cursor: pointer;
+
+    &:hover {
+      transform: translateY(-15px);
+    }
+  }
+}
+
+.space {
+  width: 1%;
+  display: inline-block;
+}

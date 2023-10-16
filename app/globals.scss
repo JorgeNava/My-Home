@@ -1,0 +1,46 @@
+// Fonts
+@font-face {
+  font-family: 'BondieSlab';
+  src: url('./assets/fonts/BondieSlab.woff') format('woff');
+}
+$primary-font: 'Arial', sans-serif;
+$secondary-font: 'Georgia', serif;
+$tertiary-font: 'BondieSlab';
+
+// Colors
+$primary-color: #3498db;
+$secondary-color: #e74c3c;
+$text-color: #333;
+
+// Sizes
+$hero-size: 40px;
+$header-size: 24px;
+$text-size: 16px;
+
+// CSS Variables adapter
+:root {
+  --primary-font: #{$primary-font};
+  --secondary-font: #{$secondary-font};
+  --tertiary-font: #{$tertiary-font};
+
+  --hero-size: #{$hero-size};
+  --header-size: #{$header-size};
+  --text-size: #{$text-size};
+}
+
+* {
+  margin: 0px;
+  padding: 0px;
+}
+
+h1 {
+  font-family: $tertiary-font;
+  color: $primary-color;
+  font-size: $header-size;
+}
+
+p {
+  font-family: $primary-font;
+  color: $text-color;
+  font-size: $text-size;
+}

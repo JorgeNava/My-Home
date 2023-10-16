@@ -1,0 +1,30 @@
+@import "./globals";
+
+.landing {
+  background: url("./assets/imgs/showcase.jpg") no-repeat center center/cover;
+
+  .landing-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    height: 80%;
+    width: 80%;
+    margin: auto;
+    color: #c4c4c4;
+  }
+
+  .dark-overlay {
+    background-color: rgba(0, 0, 0, 0.7);
+    position: "absolute";
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+  }
+
+  .title {
+    font-size: 200px;
+  }
+}
