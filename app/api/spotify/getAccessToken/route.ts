@@ -2,17 +2,6 @@ import { NextRequest, NextResponse } from "next/server";
 import querystring from "querystring";
 import configProvider from "../../../_libs/config-provider";
 
-const generateRandomString = (length: number) => {
-  var text = "";
-  var possible =
-    "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-
-  for (var i = 0; i < length; i++) {
-    text += possible.charAt(Math.floor(Math.random() * possible.length));
-  }
-  return text;
-};
-
 export async function GET(request: NextRequest) {
   const stateKey = "spotify_auth_state";
 
@@ -32,6 +21,7 @@ export async function GET(request: NextRequest) {
   console.log("[NAVA] state", state);
   console.log("[NAVA] clientId", clientId);
   console.log("[NAVA] clientSecret", clientSecret);
+  console.log('[NAVA] storedState', storedState);
   console.log("[NAVA] redirectUri", redirectUri);
 
   if (state === "" || state !== storedState) {
