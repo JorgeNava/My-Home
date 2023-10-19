@@ -1,0 +1,41 @@
+import fs from 'fs';
+import path from 'path';
+
+class ConfigProvider {
+  constructor() {
+    this.config = JSON.parse(fs.readFileSync(path.join(process.cwd(), '/config/local.json'), 'utf8'));
+  }
+
+  loadEnvVariables() {
+    this.config.spotify.clientId = process.env.SPOTIFY_CLIENT_ID || this.config.spotify.clientId;
+    this.config.spotify.clientSecret = process.env.SPOTIFY_CLIENT_SECRET || this.config.spotify.clientSecret;
+    this.config.spotify.redirectUri = process.env.SPOTIFY_REDIRECT_URI || this.config.spotify.redirectUri;
+  }
+
+  get(key) {
+    return key.split('.').reduce((o, i) => (o ? o[i] : undefined), this.config);
+  }
+
+  getConfig(){
+    return this.config;
+  }
+
+  set(key, value) {
+    const keys = key.split('.');
+    keys.reduce((o, k, i) => {
+      if (i === keys.length - 1) {
+        o[k] = value;
+        return o[k];
+      }
+      if (!o[k]) o[k] = {}; // If the property doesn't exist, create it as an empty object.
+      return o[k];
+    }, this.config);
+  }
+  
+}
+
+const provider = new ConfigProvider();
+
+provider.loadEnvVariables();
+
+export default provider;
