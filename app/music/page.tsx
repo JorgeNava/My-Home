@@ -1,4 +1,12 @@
+import configProvider from '../_libs/config-provider';
+
 export default function Music() {
+
+  const clientId = configProvider.get('spotify.clientId');
+  const redirectUri = configProvider.get('spotify.redirectUri');
+  console.log('[NAVA] clientId', clientId);
+  console.log('[NAVA] redirectUri', redirectUri);
+
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
       <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
