@@ -7,9 +7,9 @@ class ConfigProvider {
   }
 
   loadEnvVariables() {
-    this.config.spotify.clientId = process.env.SPOTIFY_CLIENT_ID || this.config.spotify.clientId;
-    this.config.spotify.clientSecret = process.env.SPOTIFY_CLIENT_SECRET || this.config.spotify.clientSecret;
-    this.config.spotify.redirectUri = process.env.SPOTIFY_REDIRECT_URI || this.config.spotify.redirectUri;
+    this.config.spotify.clientId = process.env.NEXT_PUBLIC_SPOTIFY_CLIENT_ID || this.config.spotify.clientId;
+    this.config.spotify.clientSecret = process.env.NEXT_PUBLIC_SPOTIFY_CLIENT_SECRET || this.config.spotify.clientSecret;
+    this.config.spotify.redirectUri = process.env.NEXT_PUBLIC_SPOTIFY_REDIRECT_URI || this.config.spotify.redirectUri;
   }
 
   get(key) {
