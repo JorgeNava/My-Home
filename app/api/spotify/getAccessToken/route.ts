@@ -4,6 +4,7 @@ import querystring from "querystring";
 import configProvider from "../../../_libs/config-provider";
 
 export async function GET(request: NextRequest) {
+    // TODO: MOVE TO CONFIG
   const stateKey = "spotify_auth_state";
   
   const searchParams = request.nextUrl.searchParams;
@@ -15,9 +16,6 @@ export async function GET(request: NextRequest) {
   const clientId = configProvider.get("spotify.clientId");
   const clientSecret = configProvider.get("spotify.clientSecret");
   const redirectUri = configProvider.get("spotify.redirectUri");
-
-  console.log("[NAVA] state", state);
-  console.log("[NAVA] storedState", storedState);
 
   if (state === "" || state !== storedState) {
     // TODO: Redirect with error
@@ -42,9 +40,15 @@ export async function GET(request: NextRequest) {
 
       if (authResponse?.ok) {
         const body = await authResponse.json();
-        const access_token = body.access_token;
-        const refresh_token = body.refresh_token;
+        const spotifyCookieKey = 'spotify';
+        const spotifyCookie = {
+          accesToken: body.access_token,
+          expiresIn: body.expires_in,
+          refreshToken: body.refresh_token
+        }
 
+        cookies().set(spotifyCookieKey, JSON.stringify(spotifyCookie), { secure: true });
+        console.log('[NAVA] cookies().getAll()', cookies().getAll());
 
         return NextResponse.redirect(new URL("/music", request.url));
       } else {
