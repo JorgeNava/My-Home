@@ -28,6 +28,7 @@ export async function GET() {
 
   const response = NextResponse;
   return response.redirect(new URL(
+    // TODO: MOVE TO CONFIG
     "https://accounts.spotify.com/authorize?" +
       querystring.stringify({
         response_type: "code",
