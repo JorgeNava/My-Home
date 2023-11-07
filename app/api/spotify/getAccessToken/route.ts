@@ -25,8 +25,9 @@ export async function GET(request: NextRequest) {
   console.log("[NAVA] storedState", storedState);
   console.log("[NAVA] redirectUri", redirectUri);
 
-  if (state === "" || state !== storedState) {
-    console.log('[NAVA] mismatched');
+  //if (state === "" || state !== storedState) {
+  if (state === "") {
+    console.log('[NAVA] state empty');
     /* 
     input: '/#error=state_mismatch': This looks like the invalid URL input 
     that caused the error. The string /#error=state_mismatch is not a valid 
