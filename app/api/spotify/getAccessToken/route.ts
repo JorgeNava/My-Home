@@ -35,14 +35,7 @@ export async function GET(request: NextRequest) {
     request does not match the state parameter received in the callback.
     */
 
-    return NextResponse.redirect(
-      new URL(
-        "/#" +
-          querystring.stringify({
-            error: "state_mismatch",
-          })
-      )
-    );
+    return NextResponse.redirect(new URL("/music/error", request.url));
   } else {
     const authOptions = {
       url: "https://accounts.spotify.com/api/token",
