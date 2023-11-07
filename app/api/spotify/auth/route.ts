@@ -25,6 +25,7 @@ export async function GET() {
   const redirectUri = configProvider.get('spotify.redirectUri');
 
   const response = NextResponse;
+  cookies().set(stateKey, state)
   response.next().cookies.set(stateKey, state);
   
   return response.redirect(new URL(

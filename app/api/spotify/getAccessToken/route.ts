@@ -9,9 +9,9 @@ export async function GET(request: NextRequest) {
   const searchParams = request.nextUrl.searchParams;
   const code = searchParams.get("code");
   const state =  searchParams.get("state") ? searchParams.get("state") : "";
- /*  const storedState = request.cookies.get(stateKey)
+ const storedState = request.cookies.get(stateKey)
     ? request.cookies.get(stateKey)
-    : ""; */
+    : "";
   const cookieStore = cookies()
   const xcoockies = cookieStore.getAll();
   console.log('[NAVA] xcoockies', xcoockies);
