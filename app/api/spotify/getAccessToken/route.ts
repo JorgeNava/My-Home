@@ -58,7 +58,7 @@ export async function GET(request: NextRequest) {
       const authResponse = await fetch(authOptions.url, authOptions);
 
       console.log("[NAVA] authResponse", authResponse);
-
+      console.log('[NAVA] authResponse?.ok', authResponse?.ok);
       if (authResponse?.ok) {
         const body = await authResponse.json();
         console.log('[NAVA] body', body);
@@ -67,18 +67,16 @@ export async function GET(request: NextRequest) {
 
         const options = {
           url: "https://api.spotify.com/v1/me",
+          method: "GET",
           headers: { Authorization: "Bearer " + access_token },
         };
 
         console.log("[NAVA] options", options);
 
-        const apiResponse = await fetch(options.url, {
-          method: "GET",
-          headers: options.headers,
-        });
+        const apiResponse = await fetch(options.url, options);
 
         const apiResponseBody = await apiResponse.json();
-        console.log(apiResponseBody);
+        console.log('[NAVA] apiResponseBody', apiResponseBody);
 
         // Redirect with tokens
         return NextResponse.redirect(
