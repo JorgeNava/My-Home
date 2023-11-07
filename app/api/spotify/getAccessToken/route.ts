@@ -59,8 +59,9 @@ export async function GET(request: NextRequest) {
 
       console.log("[NAVA] authResponse", authResponse);
 
-      if (authResponse.ok) {
+      if (authResponse?.ok) {
         const body = await authResponse.json();
+        console.log('[NAVA] body', body);
         const access_token = body.access_token;
         const refresh_token = body.refresh_token;
 
@@ -89,12 +90,7 @@ export async function GET(request: NextRequest) {
         );
       } else {
         // Redirect with error
-        return NextResponse.redirect(
-          "/#" +
-            querystring.stringify({
-              error: "invalid_token",
-            })
-        );
+        return NextResponse.redirect(new URL("/music/error", request.url));
       }
     } catch (error) {
       return NextResponse.json({ error: "Internal Server Error", status: 500 });
