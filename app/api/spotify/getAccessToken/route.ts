@@ -41,14 +41,15 @@ export async function GET(request: NextRequest) {
       if (authResponse?.ok) {
         const body = await authResponse.json();
         const spotifyCookieKey = 'spotify';
-        const spotifyCookie = {
+        const spotifyCookie = JSON.stringify({
           accesToken: body.access_token,
           expiresIn: body.expires_in,
           refreshToken: body.refresh_token
-        }
+        });
 
-        cookies().set(spotifyCookieKey, JSON.stringify(spotifyCookie), { secure: true });
-        console.log('[NAVA] cookies().getAll()', cookies().getAll());
+        console.log('[NAVA] spotifyCookie', spotifyCookie);
+
+        //cookies().set(spotifyCookieKey, spotifyCookie, { secure: true });
 
         return NextResponse.redirect(new URL("/music", request.url));
       } else {
