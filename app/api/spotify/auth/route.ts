@@ -17,14 +17,12 @@ const generateRandomString = (length: number) => {
 
 export async function GET() {
   const state = generateRandomString(16);
-  const scope = "user-read-private user-read-email";
+  // TODO: MOVE TO CONFIG
+  const scope = "user-read-private user-read-email user-read-playback-state user-modify-playback-state user-read-currently-playing app-remote-control streaming playlist-read-private playlist-read-collaborative playlist-modify-private playlist-modify-public user-top-read user-read-recently-played user-library-read";
   const stateKey = 'spotify_auth_state';
 
   const clientId = configProvider.get('spotify.clientId');
   const redirectUri = configProvider.get('spotify.redirectUri');
-
-  console.log('[NAVA] clientId', clientId);
-  console.log('[NAVA] redirectUri', redirectUri);
 
   const response = NextResponse;
   response.next().cookies.set(stateKey, state);
