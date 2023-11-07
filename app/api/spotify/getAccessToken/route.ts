@@ -93,7 +93,8 @@ export async function GET(request: NextRequest) {
         return NextResponse.redirect(new URL("/music/error", request.url));
       }
     } catch (error) {
-      return NextResponse.json({ error: error, status: 500 });
+      console.error(error);
+      return NextResponse.json({ error: "Internal error occured", status: 500 });
     }
   }
 }
