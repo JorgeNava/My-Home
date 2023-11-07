@@ -49,7 +49,7 @@ export async function GET(request: NextRequest) {
 
         console.log('[NAVA] spotifyCookie', spotifyCookie);
 
-        //cookies().set(spotifyCookieKey, spotifyCookie, { secure: true });
+        //cookies().set(spotifyCookieKey, spotifyCookie, { secure: true, httpOnly: true });
 
         return NextResponse.redirect(new URL("/music", request.url));
       } else {
