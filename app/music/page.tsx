@@ -2,6 +2,10 @@ import configProvider from '../_libs/config-provider';
 
 export default function Music() {
 
+  /* 
+  TODO: https://developer.spotify.com/documentation/web-playback-sdk/tutorials/getting-started
+  */
+
   const clientId = configProvider.get('spotify.clientId');
   const redirectUri = configProvider.get('spotify.redirectUri');
   console.log('[NAVA] clientId', clientId);
