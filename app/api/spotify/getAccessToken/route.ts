@@ -52,12 +52,9 @@ export async function GET(request: NextRequest) {
       }
     };
 
-    console.log("[NAVA] authOptions", authOptions);
 
     try {
       const authResponse = await fetch(authOptions.url, authOptions);
-
-      console.log("[NAVA] authResponse", authResponse);
 
       if (authResponse?.ok) {
         const body = await authResponse.json();
@@ -70,24 +67,14 @@ export async function GET(request: NextRequest) {
           headers: { Authorization: "Bearer " + access_token },
         };
 
-        console.log("[NAVA] options", options);
-
         const apiResponse = await fetch(options.url, {
           method: "GET",
           headers: options.headers,
         });
 
         const apiResponseBody = await apiResponse.json();
-        console.log('[NAVA] apiResponseBody', apiResponseBody);
-
-        // Redirect with tokens
-        return NextResponse.redirect(
-          "/#" +
-            querystring.stringify({
-              access_token: access_token,
-              refresh_token: refresh_token,
-            })
-        );
+        console.log('[NAVA] apiResponeBody', apiResponseBody);
+        return NextResponse.redirect(new URL("/music", request.url));
       } else {
         // Redirect with error
         return NextResponse.redirect(new URL("/music/error", request.url));
