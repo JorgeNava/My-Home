@@ -40,26 +40,23 @@ export async function GET(request: NextRequest) {
   } else {
     const authOptions = {
       url: "https://accounts.spotify.com/api/token",
-      form: {
+      method: "POST",
+      body: querystring.stringify({
         code: code,
         redirect_uri: redirectUri,
-        grant_type: "authorization_code",
-      },
+        grant_type: 'authorization_code'
+      }),
       headers: {
-        Authorization:
-          "Basic " +
-          Buffer.from(clientId + ":" + clientSecret).toString("base64"),
-      },
-      json: true,
+        'Content-Type': 'application/x-www-form-urlencoded',
+        'Authorization': 'Basic ' + Buffer.from(clientId + ':' + clientSecret).toString('base64')
+      }
+      json: true
     };
 
     console.log("[NAVA] authOptions", authOptions);
 
     try {
-      const authResponse = await fetch(authOptions.url, {
-        method: "POST",
-        headers: authOptions.headers,
-      });
+      const authResponse = await fetch(authOptions.url, authOptions);
 
       console.log("[NAVA] authResponse", authResponse);
 
