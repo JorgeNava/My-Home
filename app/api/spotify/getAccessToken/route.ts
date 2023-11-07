@@ -7,7 +7,7 @@ export async function GET(request: NextRequest) {
 
   const searchParams = request.nextUrl.searchParams;
   const code = searchParams.get("code");
-  const state = searchParams.get("state") ? searchParams.get("state") : "";
+  const state =  searchParams.get("state") ? searchParams.get("state") : "";
   const storedState = request.cookies.get(stateKey)
     ? request.cookies.get(stateKey)
     : "";
@@ -16,15 +16,25 @@ export async function GET(request: NextRequest) {
   const clientSecret = configProvider.get("spotify.clientSecret");
   const redirectUri = configProvider.get("spotify.redirectUri");
 
+  console.log('[NAVA] request.cookies', request.cookies);
   console.log("[NAVA] searchParams", searchParams);
   console.log("[NAVA] code", code);
   console.log("[NAVA] state", state);
   console.log("[NAVA] clientId", clientId);
   console.log("[NAVA] clientSecret", clientSecret);
-  console.log('[NAVA] storedState', storedState);
+  console.log("[NAVA] storedState", storedState);
   console.log("[NAVA] redirectUri", redirectUri);
 
   if (state === "" || state !== storedState) {
+    console.log('[NAVA] mismatched');
+    /* 
+    input: '/#error=state_mismatch': This looks like the invalid URL input 
+    that caused the error. The string /#error=state_mismatch is not a valid 
+    URL by itself. The state_mismatch error typically occurs during OAuth 
+    authentication, suggesting that the state parameter sent in the initial 
+    request does not match the state parameter received in the callback.
+    */
+
     return NextResponse.redirect(
       new URL(
         "/#" +
@@ -49,7 +59,7 @@ export async function GET(request: NextRequest) {
       json: true,
     };
 
-    console.log('[NAVA] authOptions', authOptions);
+    console.log("[NAVA] authOptions", authOptions);
 
     try {
       const authResponse = await fetch(authOptions.url, {
@@ -57,7 +67,7 @@ export async function GET(request: NextRequest) {
         headers: authOptions.headers,
       });
 
-      console.log('[NAVA] authResponse', authResponse);
+      console.log("[NAVA] authResponse", authResponse);
 
       if (authResponse.ok) {
         const body = await authResponse.json();
@@ -69,7 +79,7 @@ export async function GET(request: NextRequest) {
           headers: { Authorization: "Bearer " + access_token },
         };
 
-        console.log('[NAVA] options', options);
+        console.log("[NAVA] options", options);
 
         const apiResponse = await fetch(options.url, {
           method: "GET",
