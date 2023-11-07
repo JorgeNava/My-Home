@@ -10,28 +10,17 @@ export async function GET(request: NextRequest) {
   const code = searchParams.get("code");
   const state =  searchParams.get("state") ? searchParams.get("state") : "";
   const cookieStore = cookies();
-  const storedState = cookieStore.get(stateKey);
+  const storedState = cookieStore.get(stateKey)?.value;
 
   const clientId = configProvider.get("spotify.clientId");
   const clientSecret = configProvider.get("spotify.clientSecret");
   const redirectUri = configProvider.get("spotify.redirectUri");
 
-  console.log('[NAVA] request.cookies', request.cookies);
-  console.log("[NAVA] searchParams", searchParams);
   console.log("[NAVA] state", state);
   console.log("[NAVA] storedState", storedState);
 
-  //if (state === "" || state !== storedState) {
-  if (state === "") {
-    console.log('[NAVA] state empty');
-    /* 
-    input: '/#error=state_mismatch': This looks like the invalid URL input 
-    that caused the error. The string /#error=state_mismatch is not a valid 
-    URL by itself. The state_mismatch error typically occurs during OAuth 
-    authentication, suggesting that the state parameter sent in the initial 
-    request does not match the state parameter received in the callback.
-    */
-
+  if (state === "" || state !== storedState) {
+    // TODO: Redirect with error
     return NextResponse.redirect(new URL("/music/error", request.url));
   } else {
     const authOptions = {
@@ -59,11 +48,12 @@ export async function GET(request: NextRequest) {
 
         return NextResponse.redirect(new URL("/music", request.url));
       } else {
-        // Redirect with error
+        // TODO: Redirect with error
         return NextResponse.redirect(new URL("/music/error", request.url));
       }
     } catch (error) {
       console.error(error);
+      // TODO: Redirect with error
       return NextResponse.json({ error: "Internal error occured", status: 500 });
     }
   }
