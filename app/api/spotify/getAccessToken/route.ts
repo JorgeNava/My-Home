@@ -5,16 +5,12 @@ import configProvider from "../../../_libs/config-provider";
 
 export async function GET(request: NextRequest) {
   const stateKey = "spotify_auth_state";
-
+  
   const searchParams = request.nextUrl.searchParams;
   const code = searchParams.get("code");
   const state =  searchParams.get("state") ? searchParams.get("state") : "";
- const storedState = request.cookies.get(stateKey)
-    ? request.cookies.get(stateKey)
-    : "";
-  const cookieStore = cookies()
-  const xcoockies = cookieStore.getAll();
-  console.log('[NAVA] xcoockies', xcoockies);
+  const cookieStore = cookies();
+  const storedState = cookieStore.get(stateKey);
 
   const clientId = configProvider.get("spotify.clientId");
   const clientSecret = configProvider.get("spotify.clientSecret");

@@ -24,10 +24,9 @@ export async function GET() {
   const clientId = configProvider.get('spotify.clientId');
   const redirectUri = configProvider.get('spotify.redirectUri');
 
+  cookies().set(stateKey, state);
+
   const response = NextResponse;
-  cookies().set(stateKey, state)
-  response.next().cookies.set(stateKey, state);
-  
   return response.redirect(new URL(
     "https://accounts.spotify.com/authorize?" +
       querystring.stringify({

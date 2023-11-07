@@ -37,18 +37,6 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 
 
 TO-DO:
-Fix error: "⨯ TypeError [ERR_INVALID_URL]: Invalid URL
-    at new NodeError (node:internal/errors:405:5)
-    at new URL (node:internal/url:611:13)
-    at GET (/var/task/.next/server/app/api/spotify/getAccessToken/route.js:1:1104)
-    at /var/task/node_modules/next/dist/compiled/next-server/app-route.runtime.prod.js:14:39754
-    at /var/task/node_modules/next/dist/server/lib/trace/tracer.js:117:36
-    at NoopContextManager.with (/var/task/node_modules/next/dist/compiled/@opentelemetry/api/index.js:1:7057)
-    at ContextAPI.with (/var/task/node_modules/next/dist/compiled/@opentelemetry/api/index.js:1:516)
-    at NoopTracer.startActiveSpan (/var/task/node_modules/next/dist/compiled/@opentelemetry/api/index.js:1:18086)
-    at ProxyTracer.startActiveSpan (/var/task/node_modules/next/dist/compiled/@opentelemetry/api/index.js:1:18847)
-    at /var/task/node_modules/next/dist/server/lib/trace/tracer.js:106:107 {
-  input: '/#error=state_mismatch',
-  code: 'ERR_INVALID_URL'"
-
-Add to configs error page
+- SPOTIFY
+  - ADD STATE VALIDATION ON AUTH PROCESS
+  - ADD REFRESH TOKEN FEATURE
