@@ -50,7 +50,6 @@ export async function GET(request: NextRequest) {
         'Content-Type': 'application/x-www-form-urlencoded',
         'Authorization': 'Basic ' + Buffer.from(clientId + ':' + clientSecret).toString('base64')
       }
-      json: true
     };
 
     console.log("[NAVA] authOptions", authOptions);
