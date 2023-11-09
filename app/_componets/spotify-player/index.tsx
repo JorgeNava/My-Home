@@ -21,19 +21,6 @@ const SpotifyPlayerComponent = ({ token }: { token: string }) => {
   const [volume, setVolume] = useState(0.5); // Assuming you want to manage volume state
   const apiEndpoint = "https://api.spotify.com/v1/me/player"; // Replace with your actual endpoint
 
-  useSpotifySdk(() => {
-    // The SDK is now loaded and available at window.Spotify
-    const player = new window.Spotify.Player({
-      name: 'Your Web Player',
-      getOAuthToken: (cb: any) => { cb('your-access-token'); }
-    });
-
-    // Add event listeners and initialize the player here
-    // ...
-
-    player.connect();
-  });
-
   useEffect(() => {
     console.log('[NAVA] window.Spotify', window.Spotify);
     console.log('[NAVA] SpotifyPlayerComponent token', token);

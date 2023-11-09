@@ -1,28 +1,36 @@
 import { useEffect } from 'react';
 
-const useSpotifySdk = (onLoadCallback: () => void) => {
+declare global {
+  interface Window {
+    onSpotifyWebPlaybackSDKReady: (() => void) | undefined;
+    Spotify: any;
+  }
+}
+
+const useSpotifySdk = (onSdkReady: () => void) => {
   useEffect(() => {
-    // Function to be called when the SDK has loaded
-    window.onSpotifyWebPlaybackSDKReady = onLoadCallback;
+    window.onSpotifyWebPlaybackSDKReady = onSdkReady;
 
-    // Check if the script is already present
-    const scriptTag = document.getElementById('spotify-sdk');
-    if (!scriptTag) {
-      // Create a script tag if it does not exist
-      const script = document.createElement('script');
-      script.id = 'spotify-sdk';
-      script.type = 'text/javascript';
-      script.src = 'https://sdk.scdn.co/spotify-player.js';
-      script.async = true;
-
-      document.body.appendChild(script);
+    // Check if the Spotify SDK script is already present
+    if (document.getElementById('spotify-sdk')) {
+      onSdkReady();
+      return;
     }
 
-    // Cleanup the script and the global function on unmount
+    // If not, create it and append to the body
+    const script = document.createElement('script');
+    script.id = 'spotify-sdk';
+    script.type = 'text/javascript';
+    script.async = true;
+    script.src = 'https://sdk.scdn.co/spotify-player.js';
+    document.body.appendChild(script);
+
     return () => {
-      window.onSpotifyWebPlaybackSDKReady = null;
+      // Cleanup
+      window.onSpotifyWebPlaybackSDKReady = undefined;
+      document.body.removeChild(script);
     };
-  }, [onLoadCallback]);
+  }, [onSdkReady]);
 };
 
 export default useSpotifySdk;
