@@ -1,5 +1,6 @@
 'use client'
 import React, { useState, useEffect } from "react";
+import useSpotifySdk from './useSpotifySdk';
 
 // Assuming 'Spotify' is properly defined in the global scope
 declare global {
@@ -15,13 +16,27 @@ type SpotifyPlayerInstance = {
 };
 
 const SpotifyPlayerComponent = ({ token }: { token: string }) => {
-  console.log('[NAVA] SpotifyPlayerComponent token', token);
   const [player, setPlayer] = useState<SpotifyPlayerInstance | null>(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const [volume, setVolume] = useState(0.5); // Assuming you want to manage volume state
   const apiEndpoint = "https://api.spotify.com/v1/me/player"; // Replace with your actual endpoint
 
+  useSpotifySdk(() => {
+    // The SDK is now loaded and available at window.Spotify
+    const player = new window.Spotify.Player({
+      name: 'Your Web Player',
+      getOAuthToken: (cb: any) => { cb('your-access-token'); }
+    });
+
+    // Add event listeners and initialize the player here
+    // ...
+
+    player.connect();
+  });
+
   useEffect(() => {
+    console.log('[NAVA] window.Spotify', window.Spotify);
+    console.log('[NAVA] SpotifyPlayerComponent token', token);
     if (window.Spotify && token) {
       const spotifyPlayer = new window.Spotify.Player({
         name: "Next.js Spotify Player",
