@@ -7,6 +7,7 @@ const SpotifyPlayerComponent = ({ token }: { token: string }) => {
     <SpotifyPlayer
       token={token}
       uris={["spotify:artist:6HQYnRM4OzToCYPpVBInuU"]}
+      layout={'compact'}
     />
   );
 };

@@ -38,6 +38,8 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 
 TO-DO:
 - SPOTIFY
+  - https://www.youtube.com/watch?v=xaK7bpHBF_k
+  - MAKE COMPONENT GET CURRENT TRACK ID
+  - ADD RANDOM MODE TO COMPONENT
+  - IMPROVE COMPONENT STYLE/FEATURES
   - ADD REFRESH TOKEN FEATURE
-  - INTEGRATE SPOTIFY SDK IN FRONTEND
-  - CREATE INTERFACE FOR SPOTIFY PLAYER
