@@ -47,14 +47,7 @@ export async function GET(request: NextRequest) {
           refreshToken: body.refresh_token
         });
 
-        console.log('[NAVA] spotifyCookie', spotifyCookie);
         cookies().set(spotifyCookieKey, spotifyCookie, { secure: true, httpOnly: true });
-
-        const spotifyKey = 'spotify'
-        const spotifyCookies = cookies().get(spotifyKey)?.value;
-        console.log('[NAVA] spotifyCookies', spotifyCookies);
-        const spotifyAccessToken = spotifyCookies ? JSON.parse(spotifyCookies)?.accessToken : null;
-        console.log('[NAVA] spotifyAccessToken', spotifyAccessToken);
 
         return NextResponse.redirect(new URL("/music", request.url));
       } else {

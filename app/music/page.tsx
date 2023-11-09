@@ -8,7 +8,7 @@ const SpotifyPlayerComponent = dynamic(
 );
 
 
-export default async function Music() {
+export default function Music() {
   /* 
     TODO: https://developer.spotify.com/documentation/web-playback-sdk/tutorials/getting-started
   */
@@ -20,8 +20,8 @@ export default async function Music() {
 
     // TODO: PASS TO COOKIES SERVICE
     const spotifyKey = 'spotify'
-    const spotifyCookie = await cookies().get(spotifyKey)?.value;
-    const spotifyAccessToken = spotifyCookie ? await JSON.parse(spotifyCookie)?.accessToken : null;
+    const spotifyCookie = cookies().get(spotifyKey)?.value;
+    const spotifyAccessToken = spotifyCookie ? JSON.parse(spotifyCookie)?.accessToken : null;
     console.log('[NAVA] spotifyAccessToken', spotifyAccessToken);
   
 

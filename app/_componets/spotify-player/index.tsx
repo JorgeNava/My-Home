@@ -15,10 +15,11 @@ type SpotifyPlayerInstance = {
 };
 
 const SpotifyPlayerComponent = ({ token }: { token: string }) => {
+  console.log('[NAVA] SpotifyPlayerComponent token', token);
   const [player, setPlayer] = useState<SpotifyPlayerInstance | null>(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const [volume, setVolume] = useState(0.5); // Assuming you want to manage volume state
-  const apiEndpoint = "https://api.spotify.com/v1/me/player/play"; // Replace with your actual endpoint
+  const apiEndpoint = "https://api.spotify.com/v1/me/player"; // Replace with your actual endpoint
 
   useEffect(() => {
     if (window.Spotify && token) {
