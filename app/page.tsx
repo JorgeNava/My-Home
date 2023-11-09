@@ -1,4 +1,6 @@
 import BouncyText from "./_componets/bouncy-text";
+import FloatingYoutubePlayer from "./_componets/youtube-player";
+
 import "./style.scss";
 
 export default function Home() {
@@ -20,6 +22,7 @@ export default function Home() {
               bounceDuration="0.5s
             "
             />
+            <FloatingYoutubePlayer playlistId="PLHzRbEzKjBGxMM2v74n2MbMM9KDRhO1Ky" />
           </div>
         </div>
       </section>
