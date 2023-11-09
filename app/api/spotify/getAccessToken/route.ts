@@ -42,7 +42,7 @@ export async function GET(request: NextRequest) {
         const body = await authResponse.json();
         const spotifyCookieKey = 'spotify';
         const spotifyCookie = JSON.stringify({
-          accesToken: body.access_token,
+          accessToken: body.access_token,
           expiresIn: body.expires_in,
           refreshToken: body.refresh_token
         });
