@@ -52,7 +52,8 @@ export async function GET(request: NextRequest) {
 
         const spotifyKey = 'spotify'
         const spotifyCookies = cookies().get(spotifyKey)?.value;
-        const spotifyAccessToken = spotifyCookies ? await JSON.parse(spotifyCookies)?.accessToken : null;
+        console.log('[NAVA] spotifyCookies', spotifyCookies);
+        const spotifyAccessToken = spotifyCookies ? JSON.parse(spotifyCookies)?.accessToken : null;
         console.log('[NAVA] spotifyAccessToken', spotifyAccessToken);
 
         return NextResponse.redirect(new URL("/music", request.url));
