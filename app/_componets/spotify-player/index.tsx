@@ -44,6 +44,7 @@ const SpotifyPlayerComponent = ({ token }: { token: string }) => {
     if (!player) return;
 
     const method = isPlaying ? "pause" : "play";
+    console.log('[NAVA] `${apiEndpoint}/${method}`', `${apiEndpoint}/${method}`);
     await fetch(`${apiEndpoint}/${method}`, {
       method: "PUT",
       headers: {
@@ -56,7 +57,7 @@ const SpotifyPlayerComponent = ({ token }: { token: string }) => {
   // Function to skip to next track
   const skipToNext = async () => {
     if (!player) return;
-
+    console.log('[NAVA] `${apiEndpoint}/next`', `${apiEndpoint}/next`);
     await fetch(`${apiEndpoint}/next`, {
       method: "POST",
       headers: {
@@ -81,6 +82,8 @@ const SpotifyPlayerComponent = ({ token }: { token: string }) => {
   const setPlayerVolume = async (newVolume: number) => {
     setVolume(newVolume); // Update local state
     if (!player) return;
+
+    console.log('[NAVA] `${apiEndpoint}/volume?volume_percent=${newVolume * 100}`', `${apiEndpoint}/volume?volume_percent=${newVolume * 100}`);
 
     await fetch(`${apiEndpoint}/volume?volume_percent=${newVolume * 100}`, {
       method: "PUT",
