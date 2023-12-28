@@ -9,7 +9,7 @@ export default function Home() {
   const isMobile = /Mobi|Android/i.test(userAgent);
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
+    <main>
       <section className="landing">
         <div className="dark-overlay">
           <div className="landing-inner">
@@ -31,7 +31,7 @@ export default function Home() {
             )}
             {isMobile && (
               <>
-                <p className="phrase mt-5">A software developer site to share thoughts,</p>
+                <p className="phrase">A software developer site to share thoughts,</p>
                 <p className="phrase">ideas and share daily life moments.</p>
               </>
             )}
