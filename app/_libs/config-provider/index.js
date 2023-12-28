@@ -10,6 +10,11 @@ class ConfigProvider {
     this.config.spotify.clientId = process.env.NEXT_PUBLIC_SPOTIFY_CLIENT_ID || this.config.spotify.clientId;
     this.config.spotify.clientSecret = process.env.NEXT_PUBLIC_SPOTIFY_CLIENT_SECRET || this.config.spotify.clientSecret;
     this.config.spotify.redirectUri = process.env.NEXT_PUBLIC_SPOTIFY_REDIRECT_URI || this.config.spotify.redirectUri;
+    
+    this.config.google.clientId = process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID || this.config.google.clientId;
+    this.config.google.clientSecret = process.env.NEXT_PUBLIC_GOOGLE_CLIENT_SECRET || this.config.google.clientSecret;
+    this.config.google.redirectUri = process.env.NEXT_PUBLIC_GOOGLE_REDIRECT_URI || this.config.google.redirectUri;
+    this.config.google.refreshToken = process.env.NEXT_PUBLIC_GOOGLE_REFRESH_TOKEN || this.config.google.refreshToken;
   }
 
   get(key) {

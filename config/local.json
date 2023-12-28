@@ -1,4 +1,10 @@
 {
+  "google": {
+    "clientId": "SECRET",
+    "clientSecret": "SECRET",
+    "redirectUri": "http://localhost:3000/api/google/getAccessToken",
+    "refreshToken": ""
+  },
   "spotify": {
     "clientId": "",
     "clientSecret": "",
