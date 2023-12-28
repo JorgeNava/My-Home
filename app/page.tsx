@@ -1,6 +1,6 @@
 import { headers } from "next/headers";
-import BouncyText from "./_componets/bouncy-text";
-import FloatingYoutubePlayer from "./_componets/youtube-player";
+import BouncyText from "./_components/bouncy-text";
+import FloatingYoutubePlayer from "./_components/youtube-player";
 
 import "./style.scss";
 

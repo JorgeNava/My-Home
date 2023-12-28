@@ -3,7 +3,7 @@ import { cookies } from 'next/headers'
 import configProvider from '../_libs/config-provider';
 
 const SpotifyPlayerComponent = dynamic(
-  () => import('../_componets/spotify-player'),
+  () => import('../_components/spotify-player'),
   { ssr: false }
 );
 
