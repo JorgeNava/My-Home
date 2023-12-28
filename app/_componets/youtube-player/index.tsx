@@ -22,13 +22,14 @@ const FloatingYoutubePlayer = ({ playlistId }: { playlistId: string }) => {
 
     window.addEventListener('resize', updatePosition);
     return () => window.removeEventListener('resize', updatePosition);
-  }, [size]);
+  }, []);
 
   const opts = {
     height: "100%",
     width: "100%",
     playerVars: {
       autoplay: 1,
+      mute: 1,
       listType: 'playlist',
       list: playlistId,
     },

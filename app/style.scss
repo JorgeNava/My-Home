@@ -12,7 +12,7 @@
     height: 80%;
     width: 80%;
     margin: auto;
-    color: #c4c4c4;
+    color: $text-color-white;
   }
 
   .dark-overlay {
@@ -26,5 +26,13 @@
 
   .title {
     font-size: 200px;
+  }
+
+  .phrase {
+    font-size: $subhero-size;
+    font-family: $primary-font;
+    color: $text-color-white;
+    letter-spacing: 2px;
+    line-height: 1.35;
   }
 }
