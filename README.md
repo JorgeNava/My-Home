@@ -16,31 +16,19 @@ bun dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## More about the project
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+This project uses:
+  - Tailwind
+  - AWS S3
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Current production deployemnt is done with Vercel.
 
 
-TO-DO:
-- SPOTIFY
-  - https://www.youtube.com/watch?v=xaK7bpHBF_k
-  - https://github.com/gilbarbara/react-spotify-web-playback/blob/main/demo/src/App.tsx
-  - MAKE COMPONENT GET CURRENT TRACK ID
-  - ADD RANDOM MODE TO COMPONENT
-  - IMPROVE COMPONENT STYLE/FEATURES
-  - ADD REFRESH TOKEN FEATURE
+## TO-DO
+Automate Syncing with Google Photos API and a Script
+0- (ACTUAL) Clean initial sync gallery photos script
+1- Use Your Google Account: Set up OAuth 2.0 credentials in Google Cloud Console for your account.
+2- Write a Script: Write a script (Node.js, Python, etc.) that uses the Google Photos API to access your photos.
+3- Automate Sync: Run this script periodically (using cron jobs or similar) to download new photos and upload them to your server/cloud storage.
+4- Integration in Next.js: Fetch and display these photos from your server/cloud storage in your Next.js app.

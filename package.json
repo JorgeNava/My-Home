@@ -11,9 +11,12 @@
   "dependencies": {
     "@types/react-youtube": "^7.10.0",
     "@types/youtube": "0.0.50",
+    "aws-sdk": "^2.1526.0",
     "fs": "^0.0.1-security",
+    "googleapis": "^129.0.0",
     "lodash": "^4.17.21",
     "next": "13.5.4",
+    "node-fetch": "^3.3.2",
     "path": "^0.12.7",
     "querystring": "^0.2.1",
     "react": "^18",
