@@ -36,3 +36,21 @@
     line-height: 1.35;
   }
 }
+
+@media (max-width: 768px) {
+  .landing {
+    .landing-inner {
+      height: 100%;
+    }
+
+    .title {
+      font-size: 120px;
+      margin-bottom: 1rem;
+    }
+
+    .phrase {
+      font-size: $header-size;
+      line-height: 1.35;
+    }
+  }
+}
