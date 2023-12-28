@@ -31,7 +31,7 @@ export default function Home() {
             )}
             {isMobile && (
               <>
-                <p className="phrase">A software developer site to share thoughts,</p>
+                <p className="phrase mt-5">A software developer site to share thoughts,</p>
                 <p className="phrase">ideas and share daily life moments.</p>
               </>
             )}
