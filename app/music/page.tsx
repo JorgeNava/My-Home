@@ -13,8 +13,8 @@ export default function Music() {
     TODO: https://developer.spotify.com/documentation/web-playback-sdk/tutorials/getting-started
   */
 
-  //const clientId = configProvider.get('spotify.clientId');
-  //const redirectUri = configProvider.get('spotify.redirectUri');
+  //const clientId = await configProvider.get('spotify.clientId');
+  //const redirectUri = await configProvider.get('spotify.redirectUri');
 
     // TODO: PASS TO COOKIES SERVICE
     const spotifyKey = 'spotify'

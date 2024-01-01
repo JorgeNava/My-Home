@@ -21,8 +21,8 @@ export async function GET() {
   const scope = "user-read-private user-read-email user-read-playback-state user-modify-playback-state user-read-currently-playing app-remote-control streaming playlist-read-private playlist-read-collaborative playlist-modify-private playlist-modify-public user-top-read user-read-recently-played user-library-read";
   const stateKey = 'spotify_auth_state';
 
-  const clientId = configProvider.get('spotify.clientId');
-  const redirectUri = configProvider.get('spotify.redirectUri');
+  const clientId = await configProvider.get('spotify.clientId');
+  const redirectUri = await configProvider.get('spotify.redirectUri');
 
   cookies().set(stateKey, state);
 

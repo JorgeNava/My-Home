@@ -3,7 +3,14 @@
     "clientId": "SECRET",
     "clientSecret": "SECRET",
     "redirectUri": "http://localhost:3000/api/google/getAccessToken",
-    "refreshToken": ""
+    "accessToken": "",
+    "refreshToken": "",
+    "expiryDate": ""
+  },
+  "redis": {
+    "password": "",
+    "socketHost": "",
+    "socketPort": ""
   },
   "spotify": {
     "clientId": "",

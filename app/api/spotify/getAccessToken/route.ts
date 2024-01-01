@@ -13,9 +13,9 @@ export async function GET(request: NextRequest) {
   const cookieStore = cookies();
   const storedState = cookieStore.get(stateKey)?.value;
 
-  const clientId = configProvider.get("spotify.clientId");
-  const clientSecret = configProvider.get("spotify.clientSecret");
-  const redirectUri = configProvider.get("spotify.redirectUri");
+  const clientId = await configProvider.get("spotify.clientId");
+  const clientSecret = await configProvider.get("spotify.clientSecret");
+  const redirectUri = await configProvider.get("spotify.redirectUri");
 
   if (state === "" || state !== storedState) {
     // TODO: Redirect with error

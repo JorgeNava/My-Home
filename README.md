@@ -26,12 +26,13 @@ Current production deployemnt is done with Vercel.
 
 
 ## TO-DO
-Automate Syncing with Google Photos API and a Script
-0- (ACTUAL) Clean initial sync gallery photos script
-1- Use Your Google Account: Set up OAuth 2.0 credentials in Google Cloud Console for your account.
-2- Write a Script: Write a script (Node.js, Python, etc.) that uses the Google Photos API to access your photos.
-3- Automate Sync: Run this script periodically (using cron jobs or similar) to download new photos and upload them to your server/cloud storage.
-4- Integration in Next.js: Fetch and display these photos from your server/cloud storage in your Next.js app.
+Step 2: Authentication
+Store Refresh Token Securely: Save the refresh token on your server. Your server will use this token to access your Google Photos account.
+
+Step 3: Fetch and Serve Photos
+Fetch Photos Using Google Photos API: Your server will use the Google Photos API to fetch the photos from your album.
+
+Serve Photos to Users: Expose an endpoint from your server that sends these photos to your frontend application, which can then display them to users.
 
 
 To display your Google Photos albums to any user without requiring them to authenticate, you can use a server-side approach where the authentication is handled on the server using your own credentials. This way, your server acts as an intermediary between Google Photos and the end-users. Here are the steps to achieve this:
