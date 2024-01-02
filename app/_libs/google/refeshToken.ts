@@ -13,16 +13,23 @@ export async function refreshToken() {
       clientSecret,
       redirectUri
     );
+
+    console.log('[NAVA] oldRefreshToken', refreshToken);
   
     oauth2Client.setCredentials({
       refresh_token: refreshToken
     });
   
     const { token } = await oauth2Client.getAccessToken();
-  
-    console.log('[NAVA] token', token);
-  
-    //configProvider.set('google.accessToken', token)
+    const expiryDate = oauth2Client.credentials.expiry_date;
+    const newRefreshToken = oauth2Client.credentials.refresh_token;
+
+    console.log('[NAVA] newRefreshToken', newRefreshToken);
+
+    await configProvider.set('google.accessToken', token);
+    await configProvider.set('google.expiryDate', expiryDate);
+    await configProvider.set('google.refreshToken', newRefreshToken);
+    return token;
   } catch (error) {
     console.error("Error during token refresh:", error);
     throw error;

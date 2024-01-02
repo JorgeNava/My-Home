@@ -20,7 +20,7 @@ export async function GET(request: NextRequest) {
     const { tokens } = await oauth2Client.getToken(code);
     await oauth2Client.setCredentials(tokens);
 
-    //console.log('[NAVA] tokens', tokens);
+    console.log('[NAVA] tokens', tokens);
 
     await configProvider.set('google.accessToken', tokens?.access_token);
     await configProvider.set('google.refreshToken', tokens?.refresh_token);
