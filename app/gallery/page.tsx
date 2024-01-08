@@ -3,6 +3,9 @@ import {
   isTokenExpiringSoon,
   refreshToken
 } from "../_libs/google";
+import ExpandableGallery from "../_components/expandable-gallery";
+
+import './style.scss';
 
 const Gallery = async () => {
   const tokenExpiringSoon = await isTokenExpiringSoon();
@@ -33,25 +36,12 @@ const Gallery = async () => {
 
   const albumPhotos = await getAlbumPhotos(albumId);
 
-  const PhotosPage = ({ photos }: { photos: any }) => (
-    <div>
-      {photos.map((photo: any) => {
-        if (photo.mimeType === 'image/jpeg') {
-          return <img key={photo.id} src={photo.baseUrl} alt="Photo" />;
-        } else if (photo.mimeType === 'video/mp4') {
-          return (
-            <video key={photo.id} src={`${photo.baseUrl}=dv`} controls></video>
-          );
-        }
-        return null;
-      })}
-    </div>
-  );
-
   return (
     <main>
       <h1>Gallery Page</h1>
-      <PhotosPage photos={albumPhotos} />
+      <div className="flex justify-center items-center">
+        <ExpandableGallery photos={albumPhotos} imagesPerRow={3} />
+      </div>
     </main>
   );
 };

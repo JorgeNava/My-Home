@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@splidejs/react-splide": "^0.7.12",
     "@types/react-youtube": "^7.10.0",
     "@types/youtube": "0.0.50",
     "aws-sdk": "^2.1526.0",
